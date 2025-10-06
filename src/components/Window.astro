@@ -7,7 +7,7 @@ interface Props {
 const { id, title } = Astro.props;
 ---
 
-<div id={id} class="absolute rounded-md drop-shadow-lg drop-shadow-emerald-800">
+<div class="window absolute rounded-md drop-shadow-lg drop-shadow-emerald-800">
   <div
     class="window-bar relative flex h-8 w-full cursor-grab items-center rounded-t-md border-2 border-slate-700 bg-slate-600"
   >
@@ -37,12 +37,14 @@ const { id, title } = Astro.props;
     <slot />
   </div>
 </div>
-<script is:inline define:vars={{ id }}>
+<script>
   import { setupMovableWindow } from "../lib/window.ts";
 
-  const container = document.getElementById(id);
+  const windows = document.getElementsByClassName("window");
 
-  if (container instanceof HTMLDivElement) {
-    setupMovableWindow(container);
-  }
+  Array.from(windows).forEach((window) => {
+    if (window instanceof HTMLDivElement) {
+      setupMovableWindow(window);
+    }
+  });
 </script>

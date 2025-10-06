@@ -106,13 +106,4 @@ import Window from "../components/Window.astro";
       >
     </div>
   </Window>
-  <script>
-    import { setupMovableWindow } from "../lib/window.ts";
-
-    const pgb = document.getElementById("pgb-window");
-
-    if (pgb instanceof HTMLDivElement) {
-      setupMovableWindow(pgb);
-    }
-  </script>
 </Layout>
